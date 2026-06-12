@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공주역사박물관 - 3D 디지털 소장품 온라인 감상관</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- 1. 헤더 (GNB) -->
+  <header class="gnb">
+    <div class="gnb-container">
+      <div class="logo">
+        <span class="logo-emblem"></span>
+        <h1 class="logo-text">공주역사박물관 <span>디지털 전시관</span></h1>
+      </div>
+      <nav class="gnb-menu">
+        <a href="#" class="active" id="nav-home">메인 화면</a>
+        <a href="#" id="nav-list">전체 목록</a>
+        <a href="https://www.gongju.go.kr/museum/" target="_blank" id="nav-about">박물관 웹사이트</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 2. 메인 화면 (Home View) -->
+  <main id="view-home" class="lobby-container">
+    <section class="hero-banner">
+      <h2 class="hero-title">3D로 마주하는 백제의 숨결</h2>
+      <p class="hero-subtitle">공주역사박물관 대표 소장 유물을 3차원 디지털 입체 스캔 데이터로 더욱 가깝고 선명하게 감상해 보세요.</p>
+      
+      <!-- 홈 화면에서는 빠른 이동 버튼 제공 -->
+      <button id="btn-go-list" style="background:var(--accent-gold); color:white; border:none; padding:12px 30px; font-size:1.1rem; font-weight:700; border-radius:30px; cursor:pointer; box-shadow:0 4px 15px rgba(0,0,0,0.3); transition:transform 0.3s;">
+        소장품 전체 감상하기 ➔
+      </button>
+    </section>
+
+    <!-- 통계 배너 및 인기 랭킹 패널 -->
+    <section class="lobby-stats-section" style="margin-top:40px;">
+      <div class="stats-banner-card">
+        <div class="stats-info">
+          <h2>디지털로 되살아난 공주의 유산</h2>
+          <p>공주역사박물관은 3D 스캔 정밀 기술을 통해 역사적 소장품을 원형 그대로 디지털 보존하고 개방하고 있습니다.</p>
+          <div class="stats-stats-grid">
+            <div class="stat-box">
+              <div class="stat-num">28</div>
+              <div class="stat-label">3D 스캔 유물</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">5,420</div>
+              <div class="stat-label">고해상 이미지</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">732</div>
+              <div class="stat-label">학술/도면</div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-image-wrapper">
+          <img src="gongju_hero_banner.png" alt="백제 기와의 미학" class="stats-image-decor">
+        </div>
+      </div>
+
+      <div class="ranking-card">
+        <h3>인기 소장품 랭킹</h3>
+        <div class="ranking-list">
+          <div class="ranking-item" data-artifact="seoksu">
+            <div class="rank-num">1</div>
+            <div class="rank-info">
+              <div class="rank-name">무령왕릉 석수 (진묘수)</div>
+              <div class="rank-meta">백제 / 국보 / 준비 중</div>
+            </div>
+          </div>
+          <div class="ranking-item" data-artifact="ornament">
+            <div class="rank-num">2</div>
+            <div class="rank-info">
+              <div class="rank-name">백제 금제 관식 (무령왕릉)</div>
+              <div class="rank-meta">백제 / 국보 / 준비 중</div>
+            </div>
+          </div>
+          <div class="ranking-item" data-artifact="sumaksae">
+            <div class="rank-num">3</div>
+            <div class="rank-info">
+              <div class="rank-name">8엽연화문와당 (수막새)</div>
+              <div class="rank-meta">백제 / 소장번호 18-1 / 3D 감상 가능</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 부가 섹션 -->
+    <section class="lobby-extra-section">
+      <div class="extra-panel">
+        <h3>박물관 새소식</h3>
+        <div class="notice-list">
+          <div class="notice-item"><span class="notice-title">공주역사박물관 웅진 백제 기와 특별 전시 연장 안내</span><span class="notice-date">2026-06-10</span></div>
+          <div class="notice-item"><span class="notice-title">3D 스캔데이터 무료 공공 개방 서비스 안내</span><span class="notice-date">2026-06-03</span></div>
+          <div class="notice-item"><span class="notice-title">학술 조사 연구 보고서 '백제 와당의 계보' 발간 소식</span><span class="notice-date">2026-05-20</span></div>
+        </div>
+      </div>
+      <div class="extra-panel">
+        <h3>문화유산 교육 영상</h3>
+        <div class="video-placeholder">
+          <img src="gongju_hero_banner.png" alt="영상 미리보기" class="video-thumb">
+          <button class="video-play-btn" onclick="alert('영상 재생 준비 중입니다.')">▶</button>
+          <div class="video-title-card">"3D 국가유산 소개 - 공산성 역사 복원 편"</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 3. 전체 목록 화면 (List View) -->
+  <main id="view-list" class="lobby-container hidden">
+    <!-- 검색 및 분류 필터 바 (목록 화면 전용) -->
+    <div style="display:flex; justify-content:center; margin-top:20px;">
+      <div class="filter-bar">
+        <select id="filter-era" class="filter-select">
+          <option value="all">시대 (전체)</option>
+          <option value="백제">웅진 백제</option>
+          <option value="고려시대 추정">고려 시대</option>
+          <option value="조선">조선 시대</option>
+        </select>
+        <select id="filter-type" class="filter-select">
+          <option value="all">유물종류 (전체)</option>
+          <option value="wadang">와당 / 기와</option>
+          <option value="celadon">도자기 / 청자</option>
+          <option value="other">기타 유물</option>
+        </select>
+        <div class="filter-input-wrapper">
+          <input type="text" id="lobby-search" class="filter-input" placeholder="소장품 이름, 소장번호 등을 입력해 주세요...">
+        </div>
+        <button id="btn-search" class="filter-button" title="검색">🔍</button>
+      </div>
+    </div>
+
+    <!-- 카테고리 퀵 링크 -->
+    <section class="category-section">
+      <div class="category-list">
+        <div class="category-item active" data-category="all"><div class="category-icon">🏛️</div><span>전체 유물</span></div>
+        <div class="category-item" data-category="wadang"><div class="category-icon">🧱</div><span>기와/와당</span></div>
+        <div class="category-item" data-category="celadon"><div class="category-icon">🏺</div><span>도자기</span></div>
+        <div class="category-item" data-category="muryeong"><div class="category-icon">👑</div><span>무령왕릉</span></div>
+      </div>
+    </section>
+
+    <!-- 유물 카탈로그 그리드 -->
+    <section>
+      <div class="grid-header">
+        <h3>전체 소장품 카탈로그</h3>
+        <div class="grid-count">총 <span id="total-count">0</span>건의 유물 전시 중</div>
+      </div>
+      <div id="artifact-grid" class="museum-grid">
+        <!-- JS로 동적 삽입 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 4. 상세 워크스페이스 뷰 (Detail View) -->
+  <main id="view-detail" class="detail-container hidden">
+    <div class="detail-back-bar">
+      <button id="btn-back" class="btn-back">← 전체 목록으로 돌아가기</button>
+    </div>
+
+    <div class="workspace-grid">
+      <!-- 좌측: 3D 뷰어 -->
+      <div class="viewer-container" id="viewer-container">
+        <model-viewer id="detail-viewer" class="hidden" camera-controls touch-action="pan-y" shadow-intensity="0.8" shadow-softness="0.5" exposure="1.0" auto-rotate-delay="3000"></model-viewer>
+        
+        <div class="viewer-toolbar">
+          <button id="btn-auto-rotate" class="toolbar-btn" title="자동 회전 토글">🔄</button>
+          <button id="btn-reset-camera" class="toolbar-btn" title="카메라 시점 초기화">🎯</button>
+          <div class="toolbar-divider"></div>
+          <div class="toolbar-slider-group"><span>프리셋:</span><select id="select-lighting" class="toolbar-select"><option value="studio">스튜디오</option><option value="exhibition">전시장</option><option value="natural">자연광</option><option value="cyberpunk">네온광</option></select></div>
+          <div class="toolbar-divider"></div>
+          <div class="toolbar-slider-group"><span>밝기:</span><input type="range" id="slider-exposure" class="toolbar-slider" min="0.3" max="2.5" step="0.1" value="1.0"></div>
+          <div class="toolbar-slider-group"><span>그림자:</span><input type="range" id="slider-shadow" class="toolbar-slider" min="0" max="1.5" step="0.1" value="0.8"></div>
+          <div class="toolbar-divider"></div>
+          <button id="btn-screenshot" class="toolbar-btn" title="스크린샷 캡처">📸</button>
+        </div>
+
+        <div id="fallback-viewport" class="fallback-viewport hidden">
+          <div class="fallback-box">
+            <div class="fallback-icon">⚠️</div>
+            <h3 class="fallback-title">3D 입체 자료 준비 중</h3>
+            <p class="fallback-text">본 소장품은 현재 3D 자료가 등록되지 않았습니다.<br>가지고 계신 GLB 파일이 있다면 아래 버튼을 눌러 연동하세요.</p>
+            <button class="btn-upload-local" onclick="document.getElementById('detail-model-upload-input').click()">GLB 파일 로컬 연동</button>
+            <input type="file" id="detail-model-upload-input" class="file-input-hidden" accept=".glb">
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 정보 패널 -->
+      <div class="info-container">
+        <div class="artifact-detail-header">
+          <span class="detail-accession" id="spec-accession">소장번호: 18-1</span>
+          <h2 class="detail-title" id="spec-title">8엽연화문와당</h2>
+          <span class="detail-era-badge" id="spec-era">백제</span>
+        </div>
+
+        <div>
+          <h4 class="spec-table-title">유물 고증 명세서</h4>
+          <table class="spec-table">
+            <tr><th>명칭</th><td id="spec-name"></td></tr>
+            <tr><th>소장번호</th><td id="spec-num"></td></tr>
+            <tr><th>제작 시기</th><td id="spec-period"></td></tr>
+            <tr><th>유물 색조</th><td id="spec-color"></td></tr>
+            <tr><th>태토 질감</th><td id="spec-clay"></td></tr>
+            <tr><th>각인 문양</th><td id="spec-pattern"></td></tr>
+            <tr><th>유물 규격</th><td id="spec-size"></td></tr>
+          </table>
+        </div>
+
+        <div class="commentary-section">
+          <h4>큐레이터 감상 해설</h4>
+          <p class="commentary-text" id="spec-desc"></p>
+        </div>
+
+        <div class="annotations-section">
+          <h4>유물 세부 해설 핀 목록</h4>
+          <div class="hotspot-mode-toggle">
+            <span>큐레이터 핀 생성 모드 활성화</span>
+            <label class="switch"><input type="checkbox" id="toggle-hotspot-mode"><span class="slider-switch"></span></label>
+          </div>
+          <ul class="hotspot-list" id="hotspot-list"></ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-links"><a href="#">개인정보처리방침</a><a href="#">이용약관</a><a href="#">공공데이터 개방정책</a></div>
+      <div class="footer-logo">공주역사박물관 <span>GONGJU HISTORICAL MUSEUM</span></div>
+      <p>© 2026 Gongju Historical Museum. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <input type="file" id="file-upload-input" class="file-input-hidden" accept=".glb">
+  <div id="pin-prompt-overlay" class="pin-prompt-overlay hidden">
+    <div class="pin-prompt-box">
+      <h3>새로운 큐레이터 핀 생성</h3>
+      <div class="pin-prompt-field"><label>핀 제목</label><input type="text" id="pin-title-input"></div>
+      <div class="pin-prompt-field"><label>상세 해설</label><textarea id="pin-desc-input"></textarea></div>
+      <div class="pin-prompt-actions"><button id="btn-cancel-pin" class="btn-cancel">취소</button><button id="btn-confirm-pin" class="btn-confirm">저장</button></div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
